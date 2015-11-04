@@ -1,25 +1,25 @@
 package:
-  name: parsel
-  version: "1.0.1"
+  name: seaborn
+  version: "0.5.1"
 
 source:
-  fn: parsel-1.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/parsel/parsel-1.0.1.tar.gz
-  md5: 552f8d7e3267d331134f70c694a2bfb0
+  fn: seaborn-0.5.1.tar.gz
+  url: https://pypi.python.org/packages/source/s/seaborn/seaborn-0.5.1.tar.gz
+  md5: 2ce6ea7d3c67858c0b1f5793fa2043b8
 #  patches:
    # List any patch files here
    # - fix.patch
 
-#build:
+# build:
   # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - parsel = parsel:main
+    # - seaborn = seaborn:main
     #
-    # Would create an entry point called parsel that calls parsel.main()
+    # Would create an entry point called seaborn that calls seaborn.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,40 +30,41 @@ requirements:
   build:
     - python
     - setuptools
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
+    - scipy
+    - matplotlib
+    - pandas
+    - numpy
 
   run:
     - python
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
+    - scipy
+    - matplotlib
+    - pandas
+    - numpy
 
 test:
   # Python imports
   imports:
-    - parsel
+    - seaborn
+    - seaborn.external
+    - seaborn.tests
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-    #- py.test
 
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - pytest
+    # - nose
 
 about:
-  home: https://github.com/scrapy/parsel
+  home: http://stanford.edu/~mwaskom/software/seaborn/
   license: BSD License
-  summary: 'Parsel is a library to extract data from HTML and XML using XPath and CSS selectors'
+  summary: 'Seaborn: statistical data visualization'
 
 # See
 # http://docs.continuum.io/conda/build.html for

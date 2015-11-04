@@ -1,0 +1,99 @@
+package:
+  name: mitmproxy
+  version: "0.13"
+
+source:
+  fn: mitmproxy-0.13.tar.gz
+  url: https://pypi.python.org/packages/source/m/mitmproxy/mitmproxy-0.13.tar.gz
+  md5: 48dce26360c035e828c604911c9edb9d
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - mitmproxy = mitmproxy:main
+    #
+    # Would create an entry point called mitmproxy that calls mitmproxy.main()
+
+    - mitmweb = libmproxy.main:mitmweb
+    - mitmdump = libmproxy.main:mitmdump
+    - mitmproxy = libmproxy.main:mitmproxy
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - html2text >=2015.4.14
+    - urwid >=1.3
+    - pyparsing >=1.5.2
+    - lxml >=3.3.6
+    - pillow >=2.3.0
+    - netlib >=0.13,<0.14
+    - pyasn1 >0.1.2
+    - tornado >=4.0.2
+    - pyperclip >=1.5.8
+    - configargparse >=0.9.3
+    - blinker >=1.3
+
+  run:
+    - python
+    - html2text >=2015.4.14
+    - urwid >=1.3
+    - pyparsing >=1.5.2
+    - lxml >=3.3.6
+    - pillow >=2.3.0
+    - netlib >=0.13,<0.14
+    - pyasn1 >0.1.2
+    - tornado >=4.0.2
+    - pyperclip >=1.5.8
+    - configargparse >=0.9.3
+    - blinker >=1.3
+
+test:
+  # Python imports
+  imports:
+    - libmproxy
+    - libmproxy.console
+    - libmproxy.contrib
+    - libmproxy.contrib.jsbeautifier
+    - libmproxy.contrib.jsbeautifier.unpackers
+    - libmproxy.contrib.wbxml
+    - libmproxy.onboarding
+    - libmproxy.platform
+    - libmproxy.protocol
+    - libmproxy.proxy
+    - libmproxy.web
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - mitmweb --help
+    - mitmdump --help
+    - mitmproxy --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://mitmproxy.org
+  license: MIT License
+  summary: 'An interactive, SSL-capable, man-in-the-middle HTTP proxy for penetration testers and software developers.'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,25 +1,25 @@
 package:
-  name: parsel
-  version: "1.0.1"
+  name: pytest-twisted
+  version: "1.5"
 
 source:
-  fn: parsel-1.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/parsel/parsel-1.0.1.tar.gz
-  md5: 552f8d7e3267d331134f70c694a2bfb0
+  fn: pytest-twisted-1.5.zip
+  url: https://pypi.python.org/packages/source/p/pytest-twisted/pytest-twisted-1.5.zip
+  md5: a56ac6c08208f515b681746ab17da96c
 #  patches:
    # List any patch files here
    # - fix.patch
 
-#build:
+build:
   # noarch_python: True
-  # preserve_egg_dir: True
+  preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - parsel = parsel:main
+    # - pytest-twisted = pytest-twisted:main
     #
-    # Would create an entry point called parsel that calls parsel.main()
+    # Would create an entry point called pytest-twisted that calls pytest-twisted.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,40 +30,38 @@ requirements:
   build:
     - python
     - setuptools
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
+    - greenlet
+    - pytest >=2.3
+    - decorator
 
   run:
     - python
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
+    - setuptools
+    - greenlet
+    - pytest >=2.3
+    - decorator
 
 test:
   # Python imports
   imports:
-    - parsel
+    - pytest_twisted
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-    #- py.test
 
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - pytest
+    # - nose
 
 about:
-  home: https://github.com/scrapy/parsel
+  home: https://github.com/schmir/pytest-twisted
   license: BSD License
-  summary: 'Parsel is a library to extract data from HTML and XML using XPath and CSS selectors'
+  summary: 'A twisted plugin for py.test.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,0 +1,105 @@
+package:
+  name: prospector
+  version: "0.10.2"
+
+source:
+  fn: prospector-0.10.2.tar.gz
+  url: https://pypi.python.org/packages/source/p/prospector/prospector-0.10.2.tar.gz
+  md5: ce992d535ecb240bca23885f5171b850
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - prospector = prospector:main
+    #
+    # Would create an entry point called prospector that calls prospector.main()
+
+    - prospector = prospector.run:main
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - pylint >=1.4
+    - pylint-celery >=0.3
+    - pylint-django >=0.6
+    - pylint-plugin-utils >=0.2.3
+    - pylint-common >=0.2.1
+    - requirements-detector >=0.4
+    - setoptconf >=0.2.0
+    - dodgy >=0.1.7
+    - pyyaml
+    - mccabe >=0.2.1
+    - pyflakes >=0.8.1
+    - pep8 >=1.6.0
+    - pep8-naming >=0.2.2
+    - pep257 >=0.3.2
+
+  run:
+    - python
+    - pylint >=1.4
+    - pylint-celery >=0.3
+    - pylint-django >=0.6
+    - pylint-plugin-utils >=0.2.3
+    - pylint-common >=0.2.1
+    - requirements-detector >=0.4
+    - setoptconf >=0.2.0
+    - dodgy >=0.1.7
+    - pyyaml
+    - mccabe >=0.2.1
+    - pyflakes >=0.8.1
+    - pep8 >=1.6.0
+    - pep8-naming >=0.2.2
+    - pep257 >=0.3.2
+
+test:
+  # Python imports
+  imports:
+    - prospector
+    - prospector.config
+    - prospector.formatters
+    - prospector.profiles
+    - prospector.tools
+    - prospector.tools.dodgy
+    - prospector.tools.frosted
+    - prospector.tools.mccabe
+    - prospector.tools.pep257
+    - prospector.tools.pep8
+    - prospector.tools.profile_validator
+    - prospector.tools.pyflakes
+    - prospector.tools.pylint
+    - prospector.tools.pyroma
+    - prospector.tools.vulture
+
+  commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+    - prospector --help
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: https://github.com/landscapeio/prospector
+  license: GNU General Public License v2 or later (GPLv2+)
+  summary: 'Prospector: python static analysis tool'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

@@ -1,25 +1,25 @@
 package:
-  name: parsel
-  version: "1.0.1"
+  name: urllib3
+  version: "1.12"
 
 source:
-  fn: parsel-1.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/parsel/parsel-1.0.1.tar.gz
-  md5: 552f8d7e3267d331134f70c694a2bfb0
+  fn: urllib3-1.12.tar.gz
+  url: https://pypi.python.org/packages/source/u/urllib3/urllib3-1.12.tar.gz
+  md5: befd9dbb2c373681bd88710ba96abbdb
 #  patches:
    # List any patch files here
    # - fix.patch
 
-#build:
+# build:
   # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - parsel = parsel:main
+    # - urllib3 = urllib3:main
     #
-    # Would create an entry point called parsel that calls parsel.main()
+    # Would create an entry point called urllib3 that calls urllib3.main()
 
 
   # If this is a new build for the same version, increment the build
@@ -30,40 +30,38 @@ requirements:
   build:
     - python
     - setuptools
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
 
   run:
     - python
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
 
 test:
   # Python imports
   imports:
-    - parsel
+    - urllib3
+    - urllib3.contrib
+    - urllib3.packages
+    - urllib3.packages.ssl_match_hostname
+    - urllib3.util
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-    #- py.test
 
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
   requires:
+    - mock
+    - nose
+    - tornado
     # Put any additional test requirements here.  For example
-    - pytest
+    # - nose
 
 about:
-  home: https://github.com/scrapy/parsel
-  license: BSD License
-  summary: 'Parsel is a library to extract data from HTML and XML using XPath and CSS selectors'
+  home: http://urllib3.readthedocs.org/
+  license: MIT License
+  summary: 'HTTP library with thread-safe connection pooling, file post, and more.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

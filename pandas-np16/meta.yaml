@@ -1,0 +1,87 @@
+package:
+  name: pandas
+  version: "0.14.1"
+
+source:
+  fn: pandas-0.14.1.tar.gz
+  url: https://pypi.python.org/packages/source/p/pandas/pandas-0.14.1.tar.gz
+  md5: 393dd8f35411e4022177aa64b2da46f4
+#  patches:
+   # List any patch files here
+   # - fix.patch
+
+# build:
+  # noarch_python: True
+  # preserve_egg_dir: True
+  # entry_points:
+    # Put any entry points (scripts to be generated automatically) here. The
+    # syntax is module:function.  For example
+    #
+    # - pandas = pandas:main
+    #
+    # Would create an entry point called pandas that calls pandas.main()
+
+
+  # If this is a new build for the same version, increment the build
+  # number. If you do not include this key, it defaults to 0.
+  # number: 1
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - python-dateutil
+    - pytz >=2011k
+    - numpy ==1.6.2
+
+  run:
+    - python
+    - python-dateutil
+    - pytz >=2011k
+    - numpy ==1.6.2
+
+test:
+  # Python imports
+  imports:
+    - pandas
+    - pandas.compat
+    - pandas.computation
+    - pandas.computation.tests
+    - pandas.core
+    - pandas.io
+    - pandas.io.tests
+    - pandas.io.tests.test_json
+    - pandas.rpy
+    - pandas.sandbox
+    - pandas.sparse
+    - pandas.sparse.tests
+    - pandas.stats
+    - pandas.stats.tests
+    - pandas.tests
+    - pandas.tests.test_msgpack
+    - pandas.tools
+    - pandas.tools.tests
+    - pandas.tseries
+    - pandas.tseries.tests
+    - pandas.util
+
+  # commands:
+    # You can put test commands to be run here.  Use this to test that the
+    # entry points work.
+
+
+  # You can also put a file called run_test.py in the recipe that will be run
+  # at test time.
+
+  # requires:
+    # Put any additional test requirements here.  For example
+    # - nose
+
+about:
+  home: http://pandas.pydata.org
+  license: BSD
+  summary: 'Powerful data structures for data analysis, time series,and statistics'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

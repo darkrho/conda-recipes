@@ -1,0 +1,19 @@
+package:
+  name: scikit-learn
+  version: "0.15.2"
+
+source:
+  fn: scikit-learn-0.15.2.tar.gz
+  url: https://pypi.python.org/packages/source/s/scikit-learn/scikit-learn-0.15.2.tar.gz
+  md5: d9822ad0238e17b382a3c756ea94fe0d
+
+requirements:
+  build:
+    - python
+    - numpy ==1.6.2
+    - scipy
+
+  run:
+    - python
+    - numpy ==1.6.2
+    - scipy

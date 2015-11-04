@@ -1,69 +1,70 @@
 package:
-  name: parsel
-  version: "1.0.1"
+  name: service_identity
+  version: "14.0.0"
 
 source:
-  fn: parsel-1.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/parsel/parsel-1.0.1.tar.gz
-  md5: 552f8d7e3267d331134f70c694a2bfb0
+  fn: service_identity-14.0.0.tar.gz
+  url: https://pypi.python.org/packages/source/s/service_identity/service_identity-14.0.0.tar.gz
+  md5: cea0b0156d73b025ecef660fb51f0d9a
 #  patches:
    # List any patch files here
    # - fix.patch
 
-#build:
+build:
   # noarch_python: True
   # preserve_egg_dir: True
   # entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - parsel = parsel:main
+    # - service_identity = service_identity:main
     #
-    # Would create an entry point called parsel that calls parsel.main()
+    # Would create an entry point called service_identity that calls service_identity.main()
 
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
-  # number: 1
+  number: 1
 
 requirements:
   build:
     - python
     - setuptools
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
+    - characteristic >=14.0.0
+    - pyasn1
+    - pyasn1-modules
+    - pyopenssl >=0.12
+    - cryptography >=0.7
 
   run:
     - python
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
+    - characteristic >=14.0.0
+    - pyasn1
+    - pyasn1-modules
+    - pyopenssl >=0.12
+    - cryptography >=0.7
 
 test:
   # Python imports
   imports:
-    - parsel
+    - service_identity
 
-  commands:
+  # commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-    #- py.test
 
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - pytest
+    # - nose
 
 about:
-  home: https://github.com/scrapy/parsel
-  license: BSD License
-  summary: 'Parsel is a library to extract data from HTML and XML using XPath and CSS selectors'
+  home: https://github.com/pyca/service_identity
+  license: MIT License
+  summary: 'Service identity verification for pyOpenSSL.'
 
 # See
 # http://docs.continuum.io/conda/build.html for

@@ -1,26 +1,28 @@
 package:
-  name: parsel
-  version: "1.0.1"
+  name: pathod
+  version: "0.13"
 
 source:
-  fn: parsel-1.0.1.tar.gz
-  url: https://pypi.python.org/packages/source/p/parsel/parsel-1.0.1.tar.gz
-  md5: 552f8d7e3267d331134f70c694a2bfb0
+  fn: pathod-0.13.tar.gz
+  url: https://pypi.python.org/packages/source/p/pathod/pathod-0.13.tar.gz
+  md5: 87ee630e2df3013a68f25c8591de6170
 #  patches:
    # List any patch files here
    # - fix.patch
 
-#build:
+build:
   # noarch_python: True
   # preserve_egg_dir: True
-  # entry_points:
+  entry_points:
     # Put any entry points (scripts to be generated automatically) here. The
     # syntax is module:function.  For example
     #
-    # - parsel = parsel:main
+    # - pathod = pathod:main
     #
-    # Would create an entry point called parsel that calls parsel.main()
+    # Would create an entry point called pathod that calls pathod.main()
 
+    - pathod = libpathod.pathod_cmdline:go_pathod
+    - pathoc = libpathod.pathoc_cmdline:go_pathoc
 
   # If this is a new build for the same version, increment the build
   # number. If you do not include this key, it defaults to 0.
@@ -30,40 +32,44 @@ requirements:
   build:
     - python
     - setuptools
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
+    - netlib >=0.13,<0.14
+    - pip >=1.5.6
+    - requests >=2.4.1
+    - flask >=0.10.1
+    - pyparsing >=2.0.3
 
   run:
     - python
-    - w3lib >=1.8.0
-    - lxml
-    - six >=1.5.2
-    - cssselect >=0.9
+    - netlib >=0.13,<0.14
+    - pip >=1.5.6
+    - requests >=2.4.1
+    - flask >=0.10.1
+    - pyparsing >=2.0.3
 
 test:
   # Python imports
   imports:
-    - parsel
+    - libpathod
+    - libpathod.language
 
   commands:
     # You can put test commands to be run here.  Use this to test that the
     # entry points work.
-    #- py.test
 
+    - pathod --help
+    - pathoc --help
 
   # You can also put a file called run_test.py in the recipe that will be run
   # at test time.
 
-  requires:
+  # requires:
     # Put any additional test requirements here.  For example
-    - pytest
+    # - nose
 
 about:
-  home: https://github.com/scrapy/parsel
-  license: BSD License
-  summary: 'Parsel is a library to extract data from HTML and XML using XPath and CSS selectors'
+  home: http://pathod.net
+  license: MIT License
+  summary: 'A pathological HTTP/S daemon for testing and stressing clients.'
 
 # See
 # http://docs.continuum.io/conda/build.html for
